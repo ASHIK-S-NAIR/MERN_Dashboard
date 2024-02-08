@@ -5,7 +5,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Router>
-        <Route path="/dashpanel/dashboard" Component={DashPanel} />
+        <Route path="/" Component={DashPanel} />
       </Router>
     </BrowserRouter>
   );

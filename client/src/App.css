@@ -58,6 +58,11 @@ a {
   font-size: 0.85rem;
 }
 
+.dashPanel-left-tag:hover {
+  background-color: white;
+  color: #1a1f30;
+}
+
 .dashPanel-left-img {
   margin-right: 0.9em;
 }
@@ -172,7 +177,7 @@ a {
   margin-right: 0.1em;
 }
 
-.dashPanel-right-pieChart-color-text{
+.dashPanel-right-pieChart-color-text {
   font-size: 0.6rem;
   font-weight: 700;
 }
@@ -191,7 +196,7 @@ a {
   height: 100%;
 }
 
-.dashPanel-right-table-sec{
+.dashPanel-right-table-sec {
   display: flex;
   flex-direction: column;
 }
@@ -200,19 +205,47 @@ a {
   font-weight: 800;
 }
 
-.dashPanel-right-table-td{
+.dashPanel-right-table-td {
   height: 2em;
-  /* border: 1px solid red; */
 }
 
-.dashPanel-right-table-pagination{
+.dashPanel-right-table-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashPanel-right-table-quantity-input {
+  width: 3em;
+}
+
+.dashPanel-right-table-quantity-btn {
+  border: none;
+  color: blue;
+  font-weight: 600;
+  padding: 0.3em 0.5em;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 12px;
+}
+
+.dashPanel-right-table-quantity-btn.selected {
+  background-color: blue;
+  color: white;
+}
+
+.dashPanel-right-table-quantity-btn:hover {
+  border: 1px solid gray;
+}
+
+.dashPanel-right-table-pagination {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.dashPanel-right-table-page-btn{
+.dashPanel-right-table-page-btn {
   padding: 1em;
   width: 1.5em;
   height: 1.5em;
@@ -228,7 +261,7 @@ a {
   border: 1px solid transparent;
 }
 
-.dashPanel-right-table-page-btn:hover{
+.dashPanel-right-table-page-btn:hover {
   border: 1px solid black;
 }
 

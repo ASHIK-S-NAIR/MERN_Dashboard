@@ -36,7 +36,6 @@ exports.updateSales = async (req, res) => {
       message: "Sales updation successfull",
     });
   } catch (error) {
-    console.log(error.message)
     return res.status(400).json({
       message: "Failed to update sales in DB",
     });

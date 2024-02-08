@@ -25,7 +25,7 @@ import {
   Cell,
   Tooltip,
 } from "recharts";
-import { getAllSales } from "../../api/sales";
+import { getAllSales, updateSales } from "../../api/sales";
 
 const DashPanel = () => {
   const [sales, setSales] = useState([]);
@@ -34,6 +34,8 @@ const DashPanel = () => {
     limit: 5,
   });
   const [salesPageData, setSalesPageData] = useState([]);
+  const [edit, setEdit] = useState("");
+  const [quantity, setQuantity] = useState("");
 
   const COLORS = [
     "#a05841",
@@ -63,6 +65,19 @@ const DashPanel = () => {
       value: sale.price * sale.quantity,
     };
   });
+
+  const editSales = async (sale) => {
+    await updateSales({
+      _id: sale._id,
+      id: sale.id,
+      month: sale.month,
+      quantity,
+      price: sale.price,
+    });
+    loadSales();
+    setEdit("");
+    setQuantity("");
+  };
 
   const loadSalesPageData = useCallback(() => {
     const startIndex = (tablePage.page - 1) * tablePage.limit;
@@ -299,7 +314,31 @@ const DashPanel = () => {
                             {sale.month}
                           </td>
                           <td className="dashPanel-right-table-td">
-                            {sale.quantity}
+                            <div className="dashPanel-right-table-quantity">
+                              {edit !== sale._id ? (
+                                sale.quantity
+                              ) : (
+                                <input
+                                  onChange={(e) =>
+                                    setQuantity(parseInt(e.target.value))
+                                  }
+                                  value={quantity}
+                                  className="dashPanel-right-table-quantity-input"
+                                />
+                              )}
+                              <button
+                                className={`dashPanel-right-table-quantity-btn ${
+                                  edit !== sale._id ? "" : "selected"
+                                }`}
+                                onClick={() => {
+                                  edit !== sale._id
+                                    ? setEdit(sale._id)
+                                    : editSales(sale);
+                                }}
+                              >
+                                edit
+                              </button>
+                            </div>
                           </td>
                           <td className="dashPanel-right-table-td">
                             {sale.price}
