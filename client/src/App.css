@@ -88,6 +88,7 @@ a {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  margin-bottom: 1.5em;
 }
 
 .dashPanel-right-greeting-sec {
@@ -97,10 +98,14 @@ a {
 .dashPanel-right-greeting {
   margin-right: 0.5em;
   color: black;
+  font-size: 1.3rem;
 }
 
 .dashPanel-right-userInfo-sec {
   display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: space-around;
   padding: 0.5em 1em;
   background-color: white;
   border-radius: 10px;
@@ -112,14 +117,37 @@ a {
   margin-right: 0.5em;
 }
 
-.dashPanel-right-userInfo-name{
+.dashPanel-right-userInfo-name {
   color: black;
   margin-bottom: 0.2em;
   font-size: 0.8rem;
   font-weight: 600;
 }
 
-.dashPanel-right-userInfo-email{
+.dashPanel-right-userInfo-email {
   font-size: 0.65rem;
   font-weight: 500;
+}
+
+.dashPanel-right-firstRow{
+  margin-bottom: 1.5em;
+  display: flex;
+}
+
+.dashPanel-right-lineChart{
+  background-color: white;
+  padding: 1em 0.5em 1em 0em;
+  border-radius: 12px;
+}
+
+.dashPanel-right-table {
+  background-color: white;
+  border-radius: 12px;
+}
+
+.dashPanel-right-table-thead-tr {
+}
+
+.dashPanel-right-table-th {
+  font-weight: 800;
 }

@@ -1,4 +1,6 @@
+import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import Table from "react-bootstrap/Table";
 import dashBoardImg from "../../assets/Circled Menu.svg";
 import supportImg from "../../assets/Support.svg";
 import PluginsImg from "../../assets/Puzzle.svg";
@@ -7,8 +9,30 @@ import logoutImg from "../../assets/Shutdown.svg";
 import logoImg from "../../assets/Briefcase.svg";
 import greetingImg from "../../assets/Sun With Face.svg";
 import userImg from "../../assets/Rectangle 10.svg";
+import {
+  LineChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Line,
+  PieChart,
+  Pie,
+} from "recharts";
+import { getAllSales } from "../../api/sales";
 
 const DashPanel = () => {
+  const [sales, setSales] = useState([]);
+
+  const loadSales = useCallback(async () => {
+    const data = await getAllSales();
+    setSales(data);
+  }, []);
+
+  useEffect(() => {
+    loadSales();
+  }, [loadSales]);
+
+  console.log("sales", sales);
   return (
     <section className="dashPanel-section">
       <div className="dashPanel-left">
@@ -78,8 +102,65 @@ const DashPanel = () => {
           </div>
         </div>
         <div className="dashPanel-right-body">
-          <div className="dashPanel-right-firstRow"></div>
-          <div className="dashPanel-right-secondRow"></div>
+          <div className="dashPanel-right-firstRow">
+            <LineChart
+              width={600}
+              height={250}
+              data={sales.map((sale) => {
+                return {
+                  month: sale.month,
+                  amount: sale.price * sale.quantity,
+                };
+              })}
+              className="dashPanel-right-lineChart"
+            >
+              <XAxis dataKey="month" />
+              <YAxis />
+              <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+              <Line type="monotone" dataKey="amount" stroke="#8884d8" />
+            </LineChart>
+            <PieChart width={730} height={250}>
+              <Pie
+                data={sales.map((sale) => {
+                  return {
+                    month: sale.month,
+                    amount: sale.price * sale.quantity,
+                  };
+                })}
+                dataKey="amount"
+                nameKey="amount"
+                cx="50%"
+                cy="50%"
+                outerRadius={50}
+                fill="#8884d8"
+              />
+            </PieChart>
+          </div>
+          <div className="dashPanel-right-secondRow">
+            <Table striped bordered hover className="dashPanel-right-table">
+              <thead>
+                <tr className="dashPanel-right-table-thead-tr">
+                  <th className="dashPanel-right-table-th">Id</th>
+                  <th className="dashPanel-right-table-th">Month</th>
+                  <th className="dashPanel-right-table-th">Quantity</th>
+                  <th className="dashPanel-right-table-th">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sales &&
+                  sales.map((sale, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{sale.id}</td>
+                        <td>{sale.month}</td>
+                        <td>{sale.quantity}</td>
+                        <td>{sale.price}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
     </section>
