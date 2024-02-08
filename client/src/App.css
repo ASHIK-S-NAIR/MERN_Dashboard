@@ -1,42 +1,125 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*,
+*::before,
+*::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 300;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+ul {
+  list-style-type: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.dashPanel-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-color: #e8edff;
 }
 
-.card {
-  padding: 2em;
+.dashPanel-left {
+  background-color: #20263a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 16%;
 }
 
-.read-the-docs {
-  color: #888;
+.dashPanel-logo-sec {
+  display: grid;
+  place-items: center;
+  margin-top: 3em;
+}
+
+.dashPanel-logo-text {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.dashPanel-left-ul {
+  margin-left: 2em;
+}
+
+.dashPanel-left-tag {
+  display: flex;
+  align-items: center;
+  border-radius: 10px 0px 0px 10px;
+  background-color: #1a1f30;
+  padding: 1.1em 2em;
+  margin-bottom: 1.6em;
+  color: white;
+}
+
+.dashPanel-left-img {
+  margin-right: 0.9em;
+}
+
+.dashPanel-left-btn {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef5f53;
+  background-color: white;
+}
+
+.dashPanel-left-btn-img {
+  margin-left: 0.3em;
+}
+
+.dashPanel-right {
+  width: 84%;
+  min-height: 100%;
+  padding: 1em 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashPanel-right-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.dashPanel-right-greeting-sec {
+  display: flex;
+}
+
+.dashPanel-right-greeting {
+  margin-right: 0.5em;
+  color: black;
+}
+
+.dashPanel-right-userInfo-sec {
+  display: flex;
+  padding: 0.5em 1em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.dashPanel-right-userInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5em;
+}
+
+.dashPanel-right-userInfo-name{
+  color: black;
+  margin-bottom: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.dashPanel-right-userInfo-email{
+  font-size: 0.65rem;
+  font-weight: 500;
 }
