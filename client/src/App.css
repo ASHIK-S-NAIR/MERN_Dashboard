@@ -217,6 +217,7 @@ a {
 
 .dashPanel-right-table-quantity-input {
   width: 3em;
+  padding-left: 0.5em;
 }
 
 .dashPanel-right-table-quantity-btn {
